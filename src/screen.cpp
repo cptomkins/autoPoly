@@ -1,8 +1,12 @@
 #include "screen.hpp"
 
 // Implement the constructor for the base screen class
-Screen::Screen(sf::RenderWindow& window) : backgroundColor(sf::Color::White) {
+Screen::Screen(sf::RenderWindow& window) : backgroundColor(sf::Color::Black) {
     createBackground(window);
+}
+
+Screen::Screen()
+{
 }
 
 // Implement the handleEvents function (placeholder)

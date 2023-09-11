@@ -7,15 +7,16 @@
 
 class Screen {
 public:
-    Screen::Screen(sf::RenderWindow& window);
+    Screen();
+    Screen(sf::RenderWindow& window);
 
-    void handleEvent(sf::Event event);
-    void update();
-    void render(sf::RenderWindow& window);
+    virtual void handleEvent(sf::Event event);
+    virtual void update();
+    virtual void render(sf::RenderWindow& window);
     // Add other common functionality or data members here if needed
-    void createBackground(sf::RenderWindow& window);
+    virtual void createBackground(sf::RenderWindow& window);
 
-private:
+protected:
     sf::Color backgroundColor; // Store the background color as a member variable
     std::vector<GUIElement> renderVector;
 };

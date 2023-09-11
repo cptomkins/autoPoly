@@ -1,10 +1,10 @@
 // Application.cpp
 #include "application.hpp"
-#include "screen.hpp"
+#include "mainmenu_screen.hpp"
 
 Application::Application() : window(sf::VideoMode(800, 600), "Auto Poly by CalebFx") {
     // Initialize other members and settings
-    screenManager.setScreen(new Screen(window)); // Start with the main menu screen
+    screenManager.setScreen(new MainMenuScreen(window)); // Start with the main menu screen
 }
 
 void Application::run() {
