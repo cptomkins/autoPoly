@@ -1,34 +1,12 @@
 #include "screen.hpp"
+#include <iostream>
 
-// Implement the constructor for the base screen class
-Screen::Screen(sf::RenderWindow& window) : backgroundColor(sf::Color::Black) {
-    createBackground(window);
-}
-
-Screen::Screen()
+Screen::Screen(sf::RenderWindow& window)
 {
+    sf::Vector2u windowSize = window.getSize();
+    backgroundRect.setSize(sf::Vector2f(static_cast<float>(windowSize.x), static_cast<float>(windowSize.y)));
+    backgroundRect.setFillColor(sf::Color::Blue);
 }
-
-// Implement the handleEvents function (placeholder)
-void Screen::handleEvent(sf::Event event) {
-    // Handle events common to all screens here
-
-}
-
-// Implement the update function (placeholder)
-void Screen::update() {
-    // Update logic common to all screens here
-
-}
-
-// Implement the render function (placeholder)
-void Screen::render(sf::RenderWindow& window) {
-    for (const GUIElement element : renderVector) {
-        element.render(window);
-    }
-}
-
-// Create a background for the screen
-void Screen::createBackground(sf::RenderWindow& window){
-    renderVector.push_back(Background(backgroundColor, window));
+void Screen::render(sf::RenderWindow& window){
+    window.draw(backgroundRect);
 }

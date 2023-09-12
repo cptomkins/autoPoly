@@ -1,7 +1,8 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "screen_manager.hpp"
+#include <SFML/Graphics.hpp>
+#include "screen.hpp"
 
 class Application {
 public:
@@ -10,8 +11,7 @@ public:
 
 private:
     sf::RenderWindow window;
-    ScreenManager screenManager; // Create an instance of the screen manager
-    // Other members and functions
+    Screen screen;
 };
 
 #endif // APPLICATION_HPP
