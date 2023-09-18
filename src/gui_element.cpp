@@ -10,9 +10,9 @@ GUIElement::~GUIElement() {
     // Perform any necessary cleanup here
 }
 
-// Placeholder implementation for handleEvent() function
-void GUIElement::handleEvent(const sf::Event& event) {
-    // Implement event handling logic for your GUI element
+bool GUIElement::isInBounds(sf::Vector2i mousePosition)
+{
+    return false;
 }
 
 // Placeholder implementation for update() function

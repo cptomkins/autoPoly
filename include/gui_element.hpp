@@ -12,7 +12,7 @@ public:
     virtual ~GUIElement();
 
     // Public member functions for interaction and rendering
-    virtual void handleEvent(const sf::Event& event);
+    virtual bool isInBounds(sf::Vector2i mousePosition);
     virtual void update();
     virtual void render(sf::RenderWindow& window) const;
 

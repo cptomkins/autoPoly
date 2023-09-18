@@ -9,10 +9,13 @@ Background::Background(sf::Color bgColor, sf::RenderWindow& window) : background
     backgroundRect.setFillColor(backgroundColor);
 }
 
-// Implementation of the handleEvent function
-void Background::handleEvent(const sf::Event& event) {
-    // Implement event handling logic for the background if needed
-    // For example, you can handle mouse clicks or keyboard input here
+bool Background::isInBounds(sf::Vector2i mousePosition)
+{
+    if (backgroundRect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)))
+    {
+        return true;
+    }
+    return false;
 }
 
 // Implementation of the render function

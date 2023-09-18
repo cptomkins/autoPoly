@@ -12,6 +12,9 @@ void Application::run() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
+
+            screen.handleEvent(event, window);
+
         }
 
         window.clear();
