@@ -13,6 +13,7 @@ public:
     void render(sf::RenderWindow& window);
 private:
     std::vector<GUIElement*> renderVector;
+    GUIElement* selected;
     sf::Font font;
 };
 

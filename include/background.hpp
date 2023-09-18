@@ -9,6 +9,7 @@ public:
     // Constructor
     Background(sf::Color bgColor, sf::RenderWindow& window);
 
+    void click() override;
     bool isInBounds(sf::Vector2i mousePosition) override;
     void render(sf::RenderWindow& window) const override;
     sf::Color getBackgroundColor();

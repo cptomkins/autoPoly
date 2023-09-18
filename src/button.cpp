@@ -1,18 +1,20 @@
 #include "button.hpp"
+#include <iostream>
 
 Button::Button()
 {
     buttonShape = new sf::RectangleShape(sf::Vector2f(150, 50));
+    if (!buttonBuffer.loadFromFile("C:\\Users\\Cptom\\Desktop\\Bandlab Sounds\\DJA_Snare_05_Snare_BANDLAB.wav"))
+    {
+        std::cout << "sound not working";
+    }
+    buttonSound.setBuffer(buttonBuffer);
 }
 
-Button::Button(sf::Vector2f boxSize)
+void Button::click()
 {
-    buttonShape = new sf::RectangleShape(boxSize);
-}
-
-Button::Button(sf::Shape &shape)
-{
-    buttonShape = &shape;
+    std::cout << "Button Clicked";
+    buttonSound.play();
 }
 
 bool Button::isInBounds(sf::Vector2i mousePosition)

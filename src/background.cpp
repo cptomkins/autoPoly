@@ -9,6 +9,11 @@ Background::Background(sf::Color bgColor, sf::RenderWindow& window) : background
     backgroundRect.setFillColor(backgroundColor);
 }
 
+void Background::click()
+{
+    std::cout << "Background Clicked";
+}
+
 bool Background::isInBounds(sf::Vector2i mousePosition)
 {
     if (backgroundRect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)))

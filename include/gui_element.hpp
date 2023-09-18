@@ -12,6 +12,9 @@ public:
     virtual ~GUIElement();
 
     // Public member functions for interaction and rendering
+    virtual void click();
+    virtual void release();
+    virtual void setPosition(sf::Vector2f newPosition);
     virtual bool isInBounds(sf::Vector2i mousePosition);
     virtual void update();
     virtual void render(sf::RenderWindow& window) const;
@@ -20,6 +23,7 @@ public:
 
 private:
     // Private member variables (as needed)
+    sf::Vector2f position;
 };
 
 #endif // GUIELEMENT_HPP

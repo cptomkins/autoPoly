@@ -3,14 +3,14 @@
 
 #include "gui_element.hpp" // Include the base class header
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Button : public GUIElement {
 public:
     // Constructor
     Button();
-    Button(sf::Vector2f boxSize);
-    Button(sf::Shape& shape);
 
+    void click() override;
     bool isInBounds(sf::Vector2i mousePosition) override;
     void update() override;
     void render(sf::RenderWindow& window) const override;
@@ -19,6 +19,8 @@ public:
     void createText(char Character[], sf::Font& font);
 
 private:
+    sf::SoundBuffer buttonBuffer;
+    sf::Sound buttonSound;
     sf::Color buttonColor;
     sf::Shape* buttonShape;
     sf::Text buttonText;

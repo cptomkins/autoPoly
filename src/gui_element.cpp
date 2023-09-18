@@ -10,6 +10,19 @@ GUIElement::~GUIElement() {
     // Perform any necessary cleanup here
 }
 
+void GUIElement::click()
+{
+}
+
+void GUIElement::release()
+{
+}
+
+void GUIElement::setPosition(sf::Vector2f newPosition)
+{
+    position = newPosition;
+}
+
 bool GUIElement::isInBounds(sf::Vector2i mousePosition)
 {
     return false;

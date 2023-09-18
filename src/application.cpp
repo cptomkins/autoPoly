@@ -6,6 +6,7 @@ Application::Application() : window(sf::VideoMode(800, 600), "Auto Poly by Caleb
 }
 
 void Application::run() {
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

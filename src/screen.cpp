@@ -15,24 +15,35 @@ Screen::Screen(sf::RenderWindow& window)
     screenButton->createText(buttonChar, font);
     renderVector.push_back(screenButton);
 }
+
 Screen::~Screen()
 {
     for (GUIElement* element : renderVector) {
         delete(element);
     }
 }
+
 void Screen::handleEvent(sf::Event event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseButtonPressed){
         if (event.mouseButton.button == sf::Mouse::Left){
-            for (GUIElement* element : renderVector) {
-                if(element->isInBounds(sf::Mouse::getPosition(window))){
-                    std::cout << "HEY MAN GOOD SHIT";
+            for (int i = renderVector.size() - 1; i >= 0; i--) {
+                if(renderVector[i]->isInBounds(sf::Mouse::getPosition(window))){
+                    selected = renderVector[i];
+                    selected->click();
+                    break;
                 }
             }
         }
     }
+
+    if (event.type == sf::Event::MouseButtonReleased){
+        if (event.mouseButton.button == sf::Mouse::Left){
+            selected->release();
+        }
+    }
 }
+
 void Screen::render(sf::RenderWindow &window)
 {
     for (GUIElement* element : renderVector) {
