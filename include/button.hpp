@@ -14,7 +14,7 @@ public:
     void setPosition(sf::Vector2f newPosition) override;
     bool isInBounds(sf::Vector2i mousePosition) override;
     sf::Shape& getShape();
-    sf::Vector2f& getLocalOffset();
+    sf::Vector2f& getLocalOffset() override;
     void update() override;
     void render(sf::RenderWindow& window) const override;
     void setShape(sf::Shape& shape);

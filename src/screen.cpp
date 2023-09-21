@@ -6,6 +6,7 @@ Screen::Screen(sf::RenderWindow& window)
     sf::Vector2u windowSize = window.getSize();
     renderVector.push_back(new Background(sf::Color(13, 13, 22), window));
 
+    // Button
     if(!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf")){
         std::cout<<"Font could not load. Perhaps it doesn't exist?";
     }
@@ -18,6 +19,12 @@ Screen::Screen(sf::RenderWindow& window)
     newPosition -= buttonOffset;
     screenButton->setPosition(newPosition);
     renderVector.push_back(screenButton);
+
+
+    Label* screenLabel = new Label();
+    screenLabel->createText(buttonChar, font);
+    screenLabel->setColor(sf::Color::White);
+    renderVector.push_back(screenLabel);
 }
 
 Screen::~Screen()

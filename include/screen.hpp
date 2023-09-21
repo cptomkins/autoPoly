@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "background.hpp"
 #include "button.hpp"
+#include "label.hpp"
 
 class Screen {
 public:

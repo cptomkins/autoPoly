@@ -28,6 +28,11 @@ bool GUIElement::isInBounds(sf::Vector2i mousePosition)
     return false;
 }
 
+sf::Vector2f &GUIElement::getLocalOffset()
+{
+    return localOffset;
+}
+
 // Placeholder implementation for update() function
 void GUIElement::update() {
     // Implement update logic for your GUI element
