@@ -21,7 +21,7 @@ public:
 
     // Getters and setters (as needed)
 
-private:
+protected:
     // Private member variables (as needed)
     sf::Vector2f position;
 };

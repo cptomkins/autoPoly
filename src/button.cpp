@@ -13,8 +13,15 @@ Button::Button()
 
 void Button::click()
 {
-    std::cout << "Button Clicked";
+    // std::cout << "Button Clicked";
     buttonSound.play();
+}
+
+void Button::setPosition(sf::Vector2f newPosition)
+{
+    position = newPosition;
+    buttonShape->setPosition(position);
+    buttonText.setPosition(position);
 }
 
 bool Button::isInBounds(sf::Vector2i mousePosition)
@@ -24,6 +31,19 @@ bool Button::isInBounds(sf::Vector2i mousePosition)
         return true;
     }
     return false;
+}
+
+sf::Shape &Button::getShape()
+{
+    return *buttonShape;
+}
+
+sf::Vector2f &Button::getLocalOffset()
+{
+    float widthOffset = static_cast<float>(buttonShape->getLocalBounds().width)/2;
+    float heightOffset = static_cast<float>(buttonShape->getLocalBounds().height)/2;
+    buttonOffset = sf::Vector2f(widthOffset, heightOffset);
+    return buttonOffset;
 }
 
 void Button::update()

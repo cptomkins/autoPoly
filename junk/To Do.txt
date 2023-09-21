@@ -1,4 +1,5 @@
 To Do:
 
-- guiElement translate()
-- play a sound on button press
+- divide screen into 6-8 buttons
+- round them and add/or add a border/offset
+- file picker functionality

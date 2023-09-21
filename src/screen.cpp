@@ -13,6 +13,10 @@ Screen::Screen(sf::RenderWindow& window)
 
     Button* screenButton = new Button();
     screenButton->createText(buttonChar, font);
+    sf::Vector2f newPosition = sf::Vector2f(static_cast<float>(windowSize.x)/2, static_cast<float>(windowSize.y)/2);
+    sf::Vector2f buttonOffset = screenButton->getLocalOffset();
+    newPosition -= buttonOffset;
+    screenButton->setPosition(newPosition);
     renderVector.push_back(screenButton);
 }
 

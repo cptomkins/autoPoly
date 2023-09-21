@@ -11,7 +11,10 @@ public:
     Button();
 
     void click() override;
+    void setPosition(sf::Vector2f newPosition) override;
     bool isInBounds(sf::Vector2i mousePosition) override;
+    sf::Shape& getShape();
+    sf::Vector2f& getLocalOffset();
     void update() override;
     void render(sf::RenderWindow& window) const override;
     void setShape(sf::Shape& shape);
@@ -24,6 +27,7 @@ private:
     sf::Color buttonColor;
     sf::Shape* buttonShape;
     sf::Text buttonText;
+    sf::Vector2f buttonOffset;
     bool useText = false;
 };
 
