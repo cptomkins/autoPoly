@@ -3,7 +3,11 @@
 
 Button::Button()
 {
-    buttonShape = new sf::RectangleShape(sf::Vector2f(150, 50));
+}
+
+Button::Button(sf::Vector2f buttonSize)
+{
+    buttonShape = new sf::RectangleShape(buttonSize);
     if (!buttonBuffer.loadFromFile("C:\\Users\\Cptom\\Desktop\\Bandlab Sounds\\DJA_Snare_05_Snare_BANDLAB.wav"))
     {
         std::cout << "sound not working";
@@ -70,10 +74,36 @@ void Button::setColor(sf::Color color)
     buttonShape->setFillColor(color);
 }
 
-void Button::createText(char Character[], sf::Font& font)
+void Button::createText(char Character[], sf::Font& font, unsigned int characterSize, sf::Color textColor)
 {
     buttonText.setFont(font);
     buttonText.setString(Character);
-    buttonText.setColor(sf::Color::Black);
+    buttonText.setCharacterSize(characterSize);
+    buttonText.setColor(textColor);
     useText = true;
+}
+
+void Button::positionText(sf::Vector2f textPosition)
+{
+    sf::Vector2f newPosition = buttonShape->getPosition() + textPosition;
+    buttonText.setPosition(newPosition);
+}
+
+void Button::centerText(bool vertical, bool horizontal, float extraOffsetY)
+{
+    sf::Vector2f positionChange = sf::Vector2f(0, 0);
+    if (vertical){
+        float offsetVertical = buttonText.getLocalBounds().height/2;
+        float buttonCenterY = buttonShape->getLocalBounds().height/2;
+        positionChange.y = buttonCenterY - offsetVertical - extraOffsetY;
+        std::cout << buttonShape->getLocalBounds().height/2;
+    }
+    if (horizontal){
+        float offsetHorizontal = buttonText.getLocalBounds().width/2;
+        float buttonCenterX = buttonShape->getLocalBounds().width/2;
+        positionChange.x = buttonCenterX - offsetHorizontal;
+    }
+
+    sf::Vector2f newPosition = buttonShape->getPosition() + positionChange;
+    buttonText.setPosition(newPosition);
 }

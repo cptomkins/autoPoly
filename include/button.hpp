@@ -9,6 +9,7 @@ class Button : public GUIElement {
 public:
     // Constructor
     Button();
+    Button(sf::Vector2f buttonSize);
 
     void click() override;
     void setPosition(sf::Vector2f newPosition) override;
@@ -19,7 +20,9 @@ public:
     void render(sf::RenderWindow& window) const override;
     void setShape(sf::Shape& shape);
     void setColor(sf::Color color);
-    void createText(char Character[], sf::Font& font);
+    void createText(char Character[], sf::Font& font, unsigned int characterSize = 30, sf::Color textColor = sf::Color::Black);
+    void positionText(sf::Vector2f textPosition);
+    void centerText(bool vertical = true, bool horizontal = true, float extraOffsetY = 8);
 
 private:
     sf::SoundBuffer buttonBuffer;
