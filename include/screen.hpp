@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "background.hpp"
-#include "button.hpp"
+#include "drum_button.hpp"
 #include "label.hpp"
 
 class Screen {

@@ -15,6 +15,7 @@ public:
     virtual void click();
     virtual void release();
     virtual void setPosition(sf::Vector2f newPosition);
+    sf::Vector2f getPosition();
     virtual bool isInBounds(sf::Vector2i mousePosition);
     virtual sf::Vector2f& getLocalOffset();
     virtual void update();

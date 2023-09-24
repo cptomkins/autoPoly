@@ -12,21 +12,21 @@ Screen::Screen(sf::RenderWindow& window)
     }
 
     // Button
-    char buttonChar[] = "Test Button";
-
-    sf::Vector2f buttonSize = sf::Vector2f(600, 60);
-    Button* screenButton = new Button(buttonSize);
-    screenButton->createText(buttonChar, font);
+    sf::Vector2f buttonSize = sf::Vector2f(650, 60);
+    DrumButton* screenButton = new DrumButton(buttonSize);
+    std::vector<GUIElement*> textBoxes = screenButton->addTextboxes(font);
     sf::Vector2f newPosition = sf::Vector2f(static_cast<float>(windowSize.x)/2, static_cast<float>(windowSize.y)/2);
     sf::Vector2f buttonOffset = screenButton->getLocalOffset();
     newPosition -= buttonOffset;
     screenButton->setPosition(newPosition);
-    screenButton->centerText();
     renderVector.push_back(screenButton);
+    renderVector.insert(renderVector.end(), textBoxes.begin(), textBoxes.end());
 
     // Label
+    char labelChar[] = "Enter your sound titles and files below";
+
     Label* screenLabel = new Label();
-    screenLabel->createText(buttonChar, font);
+    screenLabel->createText(labelChar, font);
     screenLabel->setColor(sf::Color::White);
     newPosition = sf::Vector2f(static_cast<float>(windowSize.x)/2, 30);
     sf::Vector2f labelOffset = sf::Vector2f(screenLabel->getLocalOffset().x, 0-screenLabel->getLocalOffset().y);

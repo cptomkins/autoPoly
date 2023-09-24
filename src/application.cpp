@@ -1,7 +1,7 @@
 // Application.cpp
 #include "application.hpp"
 
-Application::Application() : window(sf::VideoMode(800, 600), "Auto Poly by CalebFx"), screen(window) {
+Application::Application() : window(sf::VideoMode(800, 600), "Drum Machine by Caleb Tomkins"), screen(window) {
     // Initialize other members and settings
 }
 

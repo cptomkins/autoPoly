@@ -23,6 +23,11 @@ void GUIElement::setPosition(sf::Vector2f newPosition)
     position = newPosition;
 }
 
+sf::Vector2f GUIElement::getPosition()
+{
+    return position;
+}
+
 bool GUIElement::isInBounds(sf::Vector2i mousePosition)
 {
     return false;
