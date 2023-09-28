@@ -6,6 +6,8 @@ Screen::Screen(sf::RenderWindow& window)
     sf::Vector2u windowSize = window.getSize();
     renderVector.push_back(new Background(sf::Color(13, 13, 22), window));
 
+    selected = renderVector[0];
+
     // Font
     if(!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf")){
         std::cout<<"Font could not load. Perhaps it doesn't exist?";
@@ -56,10 +58,14 @@ void Screen::handleEvent(sf::Event event, sf::RenderWindow &window)
         }
     }
 
-    if (event.type == sf::Event::MouseButtonReleased){
+    else if (event.type == sf::Event::MouseButtonReleased){
         if (event.mouseButton.button == sf::Mouse::Left){
             selected->release();
         }
+    }
+
+    else {
+        selected->handleEvent(event, window);
     }
 }
 

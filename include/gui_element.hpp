@@ -16,6 +16,7 @@ public:
     virtual void release();
     virtual void setPosition(sf::Vector2f newPosition);
     sf::Vector2f getPosition();
+    virtual void handleEvent(sf::Event event, sf::RenderWindow &window);
     virtual bool isInBounds(sf::Vector2i mousePosition);
     virtual sf::Vector2f& getLocalOffset();
     virtual void update();

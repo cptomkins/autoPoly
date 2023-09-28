@@ -28,6 +28,11 @@ sf::Vector2f GUIElement::getPosition()
     return position;
 }
 
+void GUIElement::handleEvent(sf::Event event, sf::RenderWindow &window)
+{
+    
+}
+
 bool GUIElement::isInBounds(sf::Vector2i mousePosition)
 {
     return false;

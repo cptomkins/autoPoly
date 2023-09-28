@@ -11,9 +11,11 @@ public:
 
     void click() override;
     void update() override;
+    void handleEvent(sf::Event event, sf::RenderWindow &window) override;
     void render(sf::RenderWindow& window) const override;
 
 private:
+    sf::String playerInput;
 
 };
 

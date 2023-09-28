@@ -12,6 +12,7 @@ Textbox::Textbox(sf::Vector2f buttonSize, bool useOutline, sf::Color outlineColo
         buttonShape->setOutlineThickness(-3);
         buttonShape->setOutlineColor(outlineColor);
     }
+    //playerInput = sf::String();
 }
 
 void Textbox::click()
@@ -21,6 +22,15 @@ void Textbox::click()
 
 void Textbox::update()
 {
+}
+
+void Textbox::handleEvent(sf::Event event, sf::RenderWindow &window)
+{
+    if (event.type == sf::Event::TextEntered)
+    {
+        playerInput += event.text.unicode;
+        buttonText.setString(playerInput);
+    }
 }
 
 void Textbox::render(sf::RenderWindow &window) const
