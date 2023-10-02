@@ -4,3 +4,9 @@ To Do:
 - create child class of button for sound creator
 - create child class of button for sound button
 - create child class of screen for mainMenuScreen
+
+
+
+Additional Feature Ideas:
+
+- have non overflow buttons flash red and fade back to color when an extra letter is typed

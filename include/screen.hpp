@@ -16,6 +16,7 @@ private:
     std::vector<GUIElement*> renderVector;
     GUIElement* selected;
     sf::Font font;
+    Constants constants;
 };
 
 #endif // SCREEN_HPP

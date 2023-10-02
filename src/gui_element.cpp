@@ -18,6 +18,10 @@ void GUIElement::release()
 {
 }
 
+void GUIElement::deselect()
+{
+}
+
 void GUIElement::setPosition(sf::Vector2f newPosition)
 {
     position = newPosition;

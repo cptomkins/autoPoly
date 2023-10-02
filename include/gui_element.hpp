@@ -14,6 +14,7 @@ public:
     // Public member functions for interaction and rendering
     virtual void click();
     virtual void release();
+    virtual void deselect();
     virtual void setPosition(sf::Vector2f newPosition);
     sf::Vector2f getPosition();
     virtual void handleEvent(sf::Event event, sf::RenderWindow &window);

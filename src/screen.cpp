@@ -3,6 +3,7 @@
 
 Screen::Screen(sf::RenderWindow& window)
 {
+    constants = Constants();
     sf::Vector2u windowSize = window.getSize();
     renderVector.push_back(new Background(sf::Color(13, 13, 22), window));
 
@@ -50,6 +51,7 @@ void Screen::handleEvent(sf::Event event, sf::RenderWindow &window)
         if (event.mouseButton.button == sf::Mouse::Left){
             for (int i = renderVector.size() - 1; i >= 0; i--) {
                 if(renderVector[i]->isInBounds(sf::Mouse::getPosition(window))){
+                    selected->deselect();
                     selected = renderVector[i];
                     selected->click();
                     break;
@@ -61,6 +63,16 @@ void Screen::handleEvent(sf::Event event, sf::RenderWindow &window)
     else if (event.type == sf::Event::MouseButtonReleased){
         if (event.mouseButton.button == sf::Mouse::Left){
             selected->release();
+        }
+    }
+
+    else if (event.type == sf::Event::TextEntered){
+        if (event.text.unicode == constants.ENTER){
+            selected->deselect();
+            selected = renderVector[0];
+        }
+        else {
+            selected->handleEvent(event, window);
         }
     }
 
