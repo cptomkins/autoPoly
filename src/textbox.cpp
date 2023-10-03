@@ -44,6 +44,11 @@ sf::String Textbox::getText()
     return playerInput;
 }
 
+bool Textbox::isFilled()
+{
+    return filled;
+}
+
 void Textbox::deselect()
 {
     if (playerInput.getSize() > 0){
@@ -51,6 +56,7 @@ void Textbox::deselect()
     }
     else{
         buttonText.setString(defaultText);
+        filled = false;
     }
 }
 

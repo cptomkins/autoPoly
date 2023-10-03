@@ -87,3 +87,10 @@ void Screen::render(sf::RenderWindow &window)
         element->render(window);
     }
 }
+
+void Screen::update()
+{
+    for (GUIElement* element : renderVector) {
+        element->update();
+    }
+}

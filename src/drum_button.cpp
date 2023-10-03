@@ -1,5 +1,6 @@
 #include "drum_button.hpp"
 #include <iostream>
+#include <fstream>
 
 DrumButton::DrumButton()
 {
@@ -30,13 +31,19 @@ void DrumButton::setPosition(sf::Vector2f newPosition)
     }
 }
 
-void DrumButton::setSound(char soundFile[])
+void DrumButton::setSound(char soundPath[])
 {
-    if (!buttonBuffer.loadFromFile(soundFile))
+    if (!buttonBuffer.loadFromFile(soundPath))
     {
         std::cout << "sound not working";
     }
     buttonSound.setBuffer(buttonBuffer);
+}
+
+void DrumButton::transition()
+{
+    transitioned = true;
+    std::cout << "transition";
 }
 
 std::vector<GUIElement*> DrumButton::addTextboxes(sf::Font &font, float border)
@@ -80,6 +87,26 @@ std::vector<GUIElement*> DrumButton::addTextboxes(sf::Font &font, float border)
 
 void DrumButton::update()
 {
+    if (!transitioned){
+        if ((nameBox->isFilled()) && (fileBox->isFilled())){
+            std::ifstream soundFile(fileBox->getText().toAnsiString());
+            if (soundFile.good()){
+                transition();
+            }
+            else{
+                if(!fileBoxRed){
+                    std::cout << fileBox->getText().toAnsiString();
+                    fileBox->setColor(sf::Color(255, 130, 130));
+                    fileBoxRed = true;
+                }
+            }
+        }
+        else if (fileBoxRed){
+            fileBox->setColor(sf::Color::White);
+            fileBoxRed = false;
+        } 
+    }
+    
 }
 
 void DrumButton::render(sf::RenderWindow &window) const

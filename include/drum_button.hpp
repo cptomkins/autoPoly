@@ -13,7 +13,8 @@ public:
 
     void click() override;
     void setPosition(sf::Vector2f newPosition) override;
-    void setSound(char soundFile[]);
+    void setSound(char soundPath[]);
+    void transition();
     std::vector<GUIElement*> addTextboxes(sf::Font& font, float border=5);
     void update() override;
     void render(sf::RenderWindow& window) const override;
@@ -23,6 +24,8 @@ private:
     sf::Sound buttonSound;
     Textbox* nameBox;
     Textbox* fileBox;
+    bool fileBoxRed = false;
+    bool transitioned = false;
 };
 
 #endif // BUTTON_HPP

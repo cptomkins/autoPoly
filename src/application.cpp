@@ -20,6 +20,7 @@ void Application::run() {
 
         window.clear();
 
+        screen.update();
         screen.render(window);
 
         window.display();

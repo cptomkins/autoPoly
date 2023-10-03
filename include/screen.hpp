@@ -12,6 +12,7 @@ public:
     ~Screen();
     void handleEvent(sf::Event event, sf::RenderWindow &window);
     void render(sf::RenderWindow& window);
+    void update();
 private:
     std::vector<GUIElement*> renderVector;
     GUIElement* selected;

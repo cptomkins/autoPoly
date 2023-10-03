@@ -14,6 +14,7 @@ public:
     void update() override;
     void updateText();
     sf::String getText();
+    bool isFilled();
     void deselect() override;
     void inputText(sf::Uint32 character);
     void handleEvent(sf::Event event, sf::RenderWindow &window) override;
