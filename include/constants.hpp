@@ -11,6 +11,7 @@ public:
     int BACKSPACE;
     int ENTER;
     int PASTE;
+    sf::String DEFAULT_DIRECTORY;
 };
 
 #endif // CONSTANTS_HPP

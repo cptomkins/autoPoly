@@ -9,6 +9,7 @@ DrumButton::DrumButton()
 DrumButton::DrumButton(sf::Vector2f buttonSize)
 {
     buttonShape = new sf::RectangleShape(buttonSize);
+    constants = Constants();
 }
 
 void DrumButton::click()
@@ -44,6 +45,10 @@ void DrumButton::transition()
 {
     transitioned = true;
     std::cout << "transition";
+    nameBox->setSkipRender(true);
+    fileBox->setSkipRender(true);
+    setSound((char*)soundFileString.toAnsiString().c_str());
+    setText((char*)nameBox->getText().toAnsiString().c_str());
 }
 
 std::vector<GUIElement*> DrumButton::addTextboxes(sf::Font &font, float border)
@@ -85,17 +90,16 @@ std::vector<GUIElement*> DrumButton::addTextboxes(sf::Font &font, float border)
     return textBoxes;
 }
 
-void DrumButton::update()
-{
-    if (!transitioned){
-        if ((nameBox->isFilled()) && (fileBox->isFilled())){
-            std::ifstream soundFile(fileBox->getText().toAnsiString());
+void DrumButton::validateTransition(){
+    if ((nameBox->isFilled()) && (fileBox->isFilled())){
+            soundFileString = constants.DEFAULT_DIRECTORY + fileBox->getText();
+            std::ifstream soundFile(soundFileString.toAnsiString());
             if (soundFile.good()){
                 transition();
             }
             else{
                 if(!fileBoxRed){
-                    std::cout << fileBox->getText().toAnsiString();
+                    std::cout << soundFileString.toAnsiString();
                     fileBox->setColor(sf::Color(255, 130, 130));
                     fileBoxRed = true;
                 }
@@ -105,8 +109,13 @@ void DrumButton::update()
             fileBox->setColor(sf::Color::White);
             fileBoxRed = false;
         } 
+}
+
+void DrumButton::update()
+{
+    if (!transitioned){
+        validateTransition();
     }
-    
 }
 
 void DrumButton::render(sf::RenderWindow &window) const
@@ -116,8 +125,5 @@ void DrumButton::render(sf::RenderWindow &window) const
     }
     if (useText){
         window.draw(buttonText);
-    }
-    if (nameBox != NULL){
-        nameBox->render(window);
     }
 }

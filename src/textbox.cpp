@@ -18,6 +18,11 @@ Textbox::Textbox(sf::Vector2f buttonSize, int characterLimit, bool useOverflow, 
     constants = Constants();
 }
 
+Textbox::~Textbox()
+{
+    delete(buttonShape);
+}
+
 void Textbox::click()
 {
     if (defaultText.getSize() == 0){
@@ -60,6 +65,18 @@ void Textbox::deselect()
     }
 }
 
+bool Textbox::isInBounds(sf::Vector2i mousePosition)
+{
+    if (_skipRender){
+        return false;
+    }
+    if (buttonShape->getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)))
+    {
+        return true;
+    }
+    return false;
+}
+
 void Textbox::inputText(sf::Uint32 character)
 {
     if (character == constants.BACKSPACE){
@@ -83,6 +100,11 @@ void Textbox::inputText(sf::Uint32 character)
     }
 }
 
+void Textbox::setSkipRender(bool skipRender)
+{
+    _skipRender = skipRender;
+}
+
 void Textbox::handleEvent(sf::Event event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::TextEntered)
@@ -92,11 +114,13 @@ void Textbox::handleEvent(sf::Event event, sf::RenderWindow &window)
 }
 
 void Textbox::render(sf::RenderWindow &window) const
-{
-    if (buttonShape != NULL){
-        window.draw(*buttonShape);
-    }
-    if (useText){
-        window.draw(buttonText);
+{  
+    if (!_skipRender){
+        if (buttonShape != NULL){
+            window.draw(*buttonShape);
+        }
+        if (useText){
+            window.draw(buttonText);
+        }
     }
 }

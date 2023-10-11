@@ -10,6 +10,7 @@ class Screen {
 public:
     Screen(sf::RenderWindow& window);
     ~Screen();
+    void createButton(int numButtons, sf::Vector2f buttonSize, float verticalOffset, sf::Vector2u windowSize);
     void handleEvent(sf::Event event, sf::RenderWindow &window);
     void render(sf::RenderWindow& window);
     void update();
